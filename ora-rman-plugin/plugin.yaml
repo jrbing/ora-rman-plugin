@@ -1,0 +1,27 @@
+name: ora-rman plugin
+version: 1.0
+rundeckPluginVersion: 1.0
+author: JR Bing
+date: 2016-01-13
+providers:
+  - name: rman
+    service: RemoteScriptNodeStep
+    title: RMAN
+    description: Executes the specified rman script on a remote node
+    plugin-type: script
+    script-interpreter: /bin/bash
+    script-file: rman.sh
+    script-args: '${config.database_sid} ${config.rman_cmdfile}'
+    config:
+      - type: String
+        name: database_sid
+        title: Database SID
+        description: Database SID
+        required: true
+        default:
+      - type: String
+        name: rman_cmdfile
+        title: RMAN Command File
+        description: Full path to the RMAN command file to be executed
+        required: true
+        default:
